@@ -1,6 +1,6 @@
 import React from 'react';
 import './EmojiRow.css';
-import { Emoji } from '../../types/Emoji';
+import { Emoji } from 'types/Emoji';
 
 interface IProps {
   emoji: Emoji;

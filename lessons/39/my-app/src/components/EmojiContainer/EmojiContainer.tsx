@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './EmojiContainer.css';
 import EmojiRow from '../EmojiRow';
-import { Emoji } from '../../types/Emoji';
+import { Emoji } from 'types/Emoji';
 
 interface IProps {
   searchString: string;
@@ -15,7 +15,7 @@ const EmojiContainer: React.FC<IProps> = (props) => {
     fetch(
       'https://raw.githubusercontent.com/asimonok/10-js-pro-course/lesson/38/lessons/38/emojiList.json'
     )
-      .then((response) => {
+      .then((response): Promise<Emoji[]> => {
         return response.json();
       })
       .then((data) => setEmoji(data))
@@ -55,7 +55,7 @@ const EmojiContainer: React.FC<IProps> = (props) => {
       </select>
       <ul className="emoji__list">
         {filteredEmojiList
-          .map((emoji: Emoji) => {
+          .map((emoji) => {
             return <EmojiRow emoji={emoji} key={emoji.title} />;
           })
           .slice(0, displayLimit)}
